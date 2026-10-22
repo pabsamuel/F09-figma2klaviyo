@@ -1,0 +1,19 @@
+{
+  "name": "Figma2Klaviyo",
+  "api": "1.0.0",
+  "main": "code.js",
+  "ui": "ui.html",
+  "editorType": [
+    "figma"
+  ],
+  "documentAccess": "dynamic-page",
+  "networkAccess": {
+    "allowedDomains": [
+      "none"
+    ],
+    "devAllowedDomains": [
+      "http://127.0.0.1:8799"
+    ],
+    "reasoning": "Free export is offline. Optional self-hosted upload uses your explicitly configured server; replace the production allowlist with that exact HTTPS host before publishing."
+  }
+}

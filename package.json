@@ -1,0 +1,1 @@
+{"name":"figma2klaviyo","version":"0.1.0","private":true,"description":"Figma Auto Layout to responsive Klaviyo HTML","scripts":{"build":"node build.cjs","start":"node server/index.cjs"},"engines":{"node":">=22"}}

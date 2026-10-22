@@ -1,0 +1,7 @@
+const fill = hex => [{type:'SOLID',color:{r:parseInt(hex.slice(0,2),16)/255,g:parseInt(hex.slice(2,4),16)/255,b:parseInt(hex.slice(4,6),16)/255}}];
+const text = (name,characters,fontSize=16) => ({type:'TEXT',name,characters,fontSize,fontWeight:400,width:520,fills:fill('17243b')});
+module.exports = {type:'FRAME',name:'A slower Sunday',width:600,layoutMode:'VERTICAL',paddingTop:40,paddingBottom:40,paddingLeft:36,paddingRight:36,itemSpacing:24,fills:fill('ffffff'),children:[
+  text('Brand','FIELDWORK',14),text('Headline','Make room for a slower Sunday.',36),text('Body','Good things take a little time. Discover our collection of thoughtful essentials, made for everyday rituals.'),
+  {type:'FRAME',name:'Columns',layoutMode:'HORIZONTAL',width:528,itemSpacing:20,children:[{type:'FRAME',name:'One',layoutMode:'VERTICAL',width:254,itemSpacing:10,children:[{type:'RECTANGLE',name:'Blue swatch',width:254,height:100,fills:fill('dae7f5')},text('One title','Made to last',20)]},{type:'FRAME',name:'Two',layoutMode:'VERTICAL',width:254,itemSpacing:10,children:[{type:'RECTANGLE',name:'Green swatch',width:254,height:100,fills:fill('dcece0')},text('Two title','Made for you',20)]}]},
+  {type:'FRAME',name:'CTA',width:528,layoutMode:'VERTICAL',paddingTop:16,paddingBottom:16,paddingLeft:24,paddingRight:24,fills:fill('e1eafa'),href:'https://example.com/collection',children:[text('Button','Explore the collection',16)]},text('Address','Example Brand · Replace with your legal sender address',12)
+]};

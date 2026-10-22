@@ -1,0 +1,15 @@
+const fs = require('node:fs');
+const path = require('node:path');
+const base = __dirname;
+const read = p => fs.readFileSync(path.join(base,p),'utf8');
+fs.mkdirSync(path.join(base,'plugin'),{recursive:true});
+fs.writeFileSync(path.join(base,'plugin/code.js'),read('src/export.cjs')+'\n'+read('src/plugin.js'));
+const fixture = require('./src/fixture.cjs');
+const template = read('src/ui.html');
+const ui = template.replace('/*EXPORT_CORE*/',read('src/export.cjs')).replace('/*FIXTURE*/','const fixture = '+JSON.stringify(fixture).replace(/</g,'\\u003c')+';');
+fs.writeFileSync(path.join(base,'plugin/ui.html'),ui);
+const manifestPath=path.join(base,'plugin/manifest.json');
+const previous=fs.existsSync(manifestPath)?JSON.parse(read('plugin/manifest.json')):{};
+fs.writeFileSync(manifestPath,JSON.stringify({name:'Figma2Klaviyo',api:'1.0.0',main:'code.js',ui:'ui.html',editorType:['figma'],documentAccess:'dynamic-page',networkAccess:{allowedDomains:['none'],devAllowedDomains:['http://127.0.0.1:8799'],reasoning:'Free export is offline. Optional self-hosted upload uses your explicitly configured server; replace the production allowlist with that exact HTTPS host before publishing.'},...previous},null,2));
+fs.writeFileSync(path.join(base,'example-email.html'),require('./src/export.cjs').render(fixture).html);
+console.log('Built plugin/code.js, plugin/ui.html, plugin/manifest.json and example-email.html');
