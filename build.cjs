@@ -3,6 +3,8 @@ const path = require('node:path');
 const base = __dirname;
 const read = p => fs.readFileSync(path.join(base,p),'utf8');
 fs.mkdirSync(path.join(base,'plugin'),{recursive:true});
+fs.mkdirSync(path.join(base,'plugin/vendor'),{recursive:true});
+fs.copyFileSync(path.join(base,'vendor/responsive-email-LICENSE.txt'),path.join(base,'plugin/vendor/responsive-email-LICENSE.txt'));
 fs.writeFileSync(path.join(base,'plugin/code.js'),read('src/export.cjs')+'\n'+read('src/plugin.js'));
 const fixture = require('./src/fixture.cjs');
 const template = read('src/ui.html');

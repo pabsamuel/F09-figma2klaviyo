@@ -54,8 +54,12 @@ Free exports remain in the Figma process/browser memory until download. No analy
 
 Responsive table/reset/container conventions adapted from Lee Munroe's MIT template, pinned reference commit `60b5b6ddf9600e4b7d7e1ef60e5a3a8f1e56e186`:
 https://github.com/leemunroe/responsive-html-email-template
-Full upstream license: `vendor/responsive-email-LICENSE.txt`. No third-party brand imagery or code copied from paid plugins.
+Full upstream license: `vendor/responsive-email-LICENSE.txt`. No third-party brand imagery or code copied from paid plugins. The complete MIT notice is also shipped in `plugin/vendor/responsive-email-LICENSE.txt`; keep this file with every distribution. `npm run build` copies the notice without changing the runtime contract.
 
 ## Review handoff
 
 Community listing: `LISTING.md`; illustrative listing graphic: `listing-cover.svg`. Before submission: import and run in Figma Desktop, test a real design with images, inspect supported email clients, replace the development manifest with the Figma-assigned plugin ID and exact production allowlist (if enabled), publish a publicly accessible privacy URL, then submit through Figma Desktop. A GitHub push is source delivery, not Community publication. Independent acceptance is pending.
+
+## Distribution package
+
+Package the entire `plugin/` directory, including `plugin/vendor/responsive-email-LICENSE.txt`, not just the three runtime files. For example in PowerShell, after building: `Compress-Archive -LiteralPath ./plugin -DestinationPath F09-plugin.zip`. The archive must contain `plugin/code.js`, `plugin/ui.html`, `plugin/manifest.json` and the complete upstream MIT notice. Import `plugin/manifest.json` from the extracted directory. Retain the license when handing off or publishing the package.
